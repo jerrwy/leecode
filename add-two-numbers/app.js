@@ -17,7 +17,7 @@
 
 
 module.exports = addTwoNumbers
-
+module.exports.createList = createList
 /**
  * Definition for singly-linked list.
  */
@@ -29,6 +29,8 @@ function ListNode(val) {
 /**
  * input: 123
  * output: ListNode<3> -> ListNode<2> -> ListNode<1>
+ * 
+ * ps: tag指向最后一个节点
  */
 function createList(num) {
   let node, tag, val
@@ -46,30 +48,37 @@ function createList(num) {
   }while(num>0)
   return node
 }
+
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
+ * 
+ * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ * Output: 7 -> 0 -> 8
  */
 function addTwoNumbers (l1, l2) {
-  let node = new ListNode(0)
-  let curr = node
-  let carry = 0
+  let node, tag, num, carry = 0
 
   while (l1 || l2) {
-    let c_node = new ListNode(0)
-    let c_num = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry
-    carry = Math.floor(c_num / 10)
-    c_node.val = c_num - carry * 10
-    curr.next = c_node
-    curr = curr.next
+    num = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry
+    carry = Math.floor(num / 10)
+
+    if(!node){
+      node = new ListNode(num - carry * 10)
+      tag = node
+    }else{
+      tag.next = new ListNode(num - carry * 10)
+      tag = tag.next
+    }
+
     l1 = l1 ? l1.next : null
     l2 = l2 ? l2.next : null
   }
 
   if (carry > 0) {
-    curr.next = new ListNode(carry)
+    tag.next = new ListNode(carry)
   }
 
-  return node.next
+  return node
 }
