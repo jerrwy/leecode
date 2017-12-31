@@ -16,7 +16,7 @@
  */
 
 
- module.exports = addTwoNumbers
+module.exports = addTwoNumbers
 
 /**
  * Definition for singly-linked list.
@@ -26,6 +26,26 @@ function ListNode(val) {
   this.next = null;
 }
 
+/**
+ * input: 123
+ * output: ListNode<3> -> ListNode<2> -> ListNode<1>
+ */
+function createList(num) {
+  let node, tag, val
+  do{
+    val = num % 10
+    num = Math.floor(num / 10)
+    if(!node){
+      node = new ListNode(val)
+      tag = node
+    }
+    else{
+      tag.next = new ListNode(val)
+      tag = tag.next
+    }
+  }while(num>0)
+  return node
+}
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
