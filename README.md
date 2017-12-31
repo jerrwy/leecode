@@ -8,7 +8,7 @@
 npm i
 ```
 
-单元测试
+单元测试
 
 ```shell
 npm test
