@@ -1,0 +1,26 @@
+{
+  "name": "leecode",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha '**/*.spec.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jerrwy/leecode.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "jerrwy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jerrwy/leecode/issues"
+  },
+  "homepage": "https://github.com/jerrwy/leecode#readme",
+  "dependencies": {
+    "mocha": "^4.1.0",
+    "power-assert": "^1.4.4"
+  }
+}
